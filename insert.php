@@ -15,7 +15,7 @@ $Price = $_POST["Price"];
 
     $sql = "INSERT INTO `product`(`pID`, `pAttribute`, `pPrice`, `pInstockTime`) VALUES ('$ID','$Attribute','$Price','$Time')";
     echo "建立成功！";
-    echo "<a href=index.php>返回主畫面</a>";
+    echo "<a href=index.html>返回主畫面</a>";
     mysqli_query($link, $sql);
     mysqli_close($link);
 ?>

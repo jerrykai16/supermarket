@@ -1,36 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
 <?php
+    $id = $_POST["pId"];
+
     $link = @mysqli_connect( 
         'localhost',  // MySQL主機名稱 
         'root',       // 使用者名稱 
         '',            // 密碼
         'supermarket');
-    $sql = "select pID from product";
-    $result = mysqli_query($link,$sql);
-
-    while($row = mysqli_fetch_assoc($result)){
-       $pId[] = $row["pID"];
-    }
+    $sql = "select * from product where pID = '$id'";
+    $result = mysqli_fetch_assoc(mysqli_query($link,$sql));
     
+    echo "ID:$result[pID]</br>屬性:$result[pAttribute]</br>價格:$$result[pPrice]</br>入庫時間:$result[pInStockTime]</br></br>";
+    echo "<a href=index.html>返回主畫面</a>";
+
+
     mysqli_close($link);
 ?>
-<body>
-    <form method="post" action="select.php">
-        pID:<select name="pId">
-            <?php
-                foreach($pId as $id){
-                    echo "<option value=$id>$id</option>";
-                }
-            ?>
-        </select>
-        </br></br>
-        <input type="submit" value="查詢">
-    </form>
-</body>
-</html>
