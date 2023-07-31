@@ -22,7 +22,7 @@
 ?>
 <body>
     <form method="post" action="select.php">
-        <select name="pId">
+        pID:<select name="pId">
             <?php
                 foreach($pId as $id){
                     echo "<option value=$id>$id</option>";
