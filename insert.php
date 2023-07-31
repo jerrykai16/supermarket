@@ -3,7 +3,6 @@
 $ID = $_POST["ID"];
 $Attribute = $_POST["Attribute"];
 $Price = $_POST["Price"];
-$Time = $_POST["time"];
 
     $link = @mysqli_connect( 
         'localhost',  // MySQL主機名稱 
@@ -11,9 +10,12 @@ $Time = $_POST["time"];
         '',            // 密碼
         'supermarket');
         
-        $sql = "INSERT INTO `product`(`pID`, `pAttribute`, `pPrice`, `pInsotckTime`) VALUES ('$ID','$Attribute','$Price','$Time')";
-        echo "$sql";
-        mysqli_query($link, $sql);
+    date_default_timezone_set('Asia/Taipei');
+    $Time = date('Y-m-d H:i:s');
+
+    $sql = "INSERT INTO `product`(`pID`, `pAttribute`, `pPrice`, `pInstockTime`) VALUES ('$ID','$Attribute','$Price','$Time')";
+    echo "$sql";
+    mysqli_query($link, $sql);
 
 
     mysqli_close($link);
